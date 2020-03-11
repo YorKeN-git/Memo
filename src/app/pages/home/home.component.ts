@@ -15,16 +15,28 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     //charge les mémo enregistrer
-    this.afficherMemo();
+    if(localStorage.getItem('memoList')){
+      this.afficherMemo();
+    }
+    
 
   }
 
   afficherMemo(){
     var memoList = localStorage.getItem('memoList');
     console.log(memoList);
+    JSON.parse
     for(let i=0 ; i < memoList.length ; i++){
-      // document.getElementById('memo').innerHTML = 
+      // document.getElementById('memo').innerHTML += '<div class="memo"><h4>'+ memoList +'</h4><p> contenu </p> <button type="button" class="btn btn-success" (click)="doneMemo()">Fait !</button> <button type="button" class="btn btn-danger" (click)="deleteMemo()">Supprimer</button>';
     }
+  }
+
+  doneMemo(){
+    //TODO done memo
+  }
+
+  deleteMemo(){
+    //TODO delete memo
   }
 
 }

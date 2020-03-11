@@ -1,10 +1,17 @@
 .listMemo {
-    display: grid;
+    display: inline;
 }
 
 .memo {
     text-align: center;
     border: solid 1px black;
-    height: auto;
-    width: 300px;
+    border-radius: 15px;
+    height: 300px;
+    width: 250px;
+    margin: 5px;
+    display: inline-block;
+}
+
+button {
+    margin: 5px;
 }
