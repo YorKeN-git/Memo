@@ -1,5 +1,11 @@
 <div>
     <div class="memo" *ngFor="let memo of listMemos">
+        <div *ngIf="memo.priorite == 'Normal';else prioriteHaute">
+            <p class="prioriteNormal">Normal</p>
+        </div>
+        <ng-template #prioriteHaute>
+            <p class="prioriteHaute">Urgent</p>
+        </ng-template>
         <h4>{{memo.titre}}</h4>
         <p>{{memo.contenu}}</p>
         <button type="button" class="btn btn-success" (click)="doneMemo()">Fait !</button>

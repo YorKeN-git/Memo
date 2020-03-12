@@ -18,8 +18,12 @@ button {
 
 .prioriteHaute {
     background-color: red;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.prioriteBasse {
+.prioriteNormal {
     background-color: green;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }

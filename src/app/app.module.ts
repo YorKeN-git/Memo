@@ -10,6 +10,7 @@ import { AddMemoComponent } from './components/add-memo/add-memo.component';
 import { NewMemoComponent } from './pages/new-memo/new-memo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MesMemosComponent } from './components/mes-memos/mes-memos.component';
+import { LOCALE_ID } from '@angular/core';
 
 
 
@@ -31,7 +32,7 @@ import { MesMemosComponent } from './components/mes-memos/mes-memos.component';
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
