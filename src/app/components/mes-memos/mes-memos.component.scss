@@ -1,0 +1,25 @@
+.listMemo {
+    display: inline;
+}
+
+.memo {
+    text-align: center;
+    border: solid 3px black;
+    border-radius: 15px;
+    height: 300px;
+    width: 250px;
+    margin: 5px;
+    display: inline-block;
+}
+
+button {
+    margin: 5px;
+}
+
+.prioriteHaute {
+    background-color: red;
+}
+
+.prioriteBasse {
+    background-color: green;
+}

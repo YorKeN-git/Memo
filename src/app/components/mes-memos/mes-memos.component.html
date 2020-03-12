@@ -1,0 +1,11 @@
+<div>
+    <div class="memo" *ngFor="let memo of listMemos">
+        <h4>{{memo.titre}}</h4>
+        <p>{{memo.contenu}}</p>
+        <button type="button" class="btn btn-success" (click)="doneMemo()">Fait !</button>
+        <button type="button" class="btn btn-danger" (click)="deleteMemo()">Supprimer</button>
+    </div>
+</div>
+
+
+<!-- <div id="contentInside" *ngFor="let container of containers"></div> -->

@@ -9,6 +9,7 @@ import { VerticalToolsComponent } from './components/vertical-tools/vertical-too
 import { AddMemoComponent } from './components/add-memo/add-memo.component';
 import { NewMemoComponent } from './pages/new-memo/new-memo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MesMemosComponent } from './components/mes-memos/mes-memos.component';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     VerticalToolsComponent,
     AddMemoComponent,
-    NewMemoComponent
+    NewMemoComponent,
+    MesMemosComponent
   ],
   imports: [
     BrowserModule,
