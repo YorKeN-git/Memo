@@ -44,4 +44,14 @@ export class AddMemoService {
     return this.http.get(this.path, this.httpOptions);
   }
 
+  deleteMemo(id: string){
+    let pathDelete = this.path + "/delete/" + id;
+    this.http.post(pathDelete, null, this.httpOptions).subscribe(
+      {
+        next: null,
+        error: error => console.error('Il y a eu une erreur!', error)
+      }
+    );
+  }
+
 }

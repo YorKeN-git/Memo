@@ -33,8 +33,10 @@ export class MesMemosComponent implements OnInit {
     this.listMemos = JSON.parse(save);
   }
 
-  deleteMemo(id:number){
+  deleteMemo(id:string){
     //Supprime le mémo 
+    this.memoService.deleteMemo(id);
+    this.ngOnInit();
   }
 
   doneMemo(id:number){
@@ -48,6 +50,7 @@ export class MesMemosComponent implements OnInit {
   rechercherLesMemos(){
     this.memoService.getMemos().subscribe({
       next: data => {
+        this.listMemos = [] as Memo[];
         for(const d of (data as any)){
           this.newMemo = new Memo();
           this.newMemo.id = d.id;
@@ -56,7 +59,7 @@ export class MesMemosComponent implements OnInit {
           this.newMemo.priorite = d.priorite;
           this.listMemos.push(this.newMemo);
         }
-        console.log(this.listMemos);
+        //console.log(this.listMemos);
       },
       error: error => console.error('Il y a eu une erreur!', error)
     });
