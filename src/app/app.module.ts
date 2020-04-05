@@ -11,7 +11,8 @@ import { NewMemoComponent } from './pages/new-memo/new-memo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MesMemosComponent } from './components/mes-memos/mes-memos.component';
 import { LOCALE_ID } from '@angular/core';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,6 +31,9 @@ import { LOCALE_ID } from '@angular/core';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+
 
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],

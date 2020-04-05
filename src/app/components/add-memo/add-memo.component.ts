@@ -4,6 +4,7 @@ import { AddMemoService } from 'src/app/services/add-memo.service';
 import { Memo } from 'src/app/modele/memo';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-add-memo',
   templateUrl: './add-memo.component.html',

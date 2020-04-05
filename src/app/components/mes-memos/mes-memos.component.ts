@@ -9,13 +9,13 @@ import { Memo } from 'src/app/modele/memo';
 export class MesMemosComponent implements OnInit {
 
   listMemos: Memo[] = [];
+  listMemosDoneOrDelete: Memo[] = [];
 
   constructor() { }
 
   ngOnInit() {
-
-    let save = localStorage.getItem('memoList');
-    this.listMemos = JSON.parse(save);
+    this.getMemoInLocalStorage();
+    
     // for(let i=0; i < this.listMemos.length ; i++){
     //   console.log("Mémo n°" + i);
     //   console.log("titre: " + this.listMemos[i].titre);
@@ -24,5 +24,21 @@ export class MesMemosComponent implements OnInit {
     //console.log(this.listMemos);
     
   }
+
+  getMemoInLocalStorage(){
+    let save = localStorage.getItem('memoList');
+    this.listMemos = JSON.parse(save);
+  }
+
+  deleteMemo(id:number){
+    //Supprime le mémo 
+  }
+
+  doneMemo(id:number){
+    //Place le memo terminé dans une liste de mémo terminé 
+    //utile à l'avenir pour les statistique 
+  }
+
+
 
 }
