@@ -1,5 +1,5 @@
 export class Memo {
-    id: number;
+    id: string;
     titre: string;
     contenu: string;
     priorite: string;

@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AddMemoService {
   newMemo: Memo;
   listMemo: Memo[] = [];
-  path: string = "localhost:8080/memos/";
+  path: string = "http://localhost:8080/memos/";
 
   httpOptions = {
     headers: new HttpHeaders({ 
@@ -20,7 +20,7 @@ export class AddMemoService {
   };
 
   constructor(private http: HttpClient) { }
-  idMemo: number = 0 ;
+  //idMemo: number = 0 ;
   /**
    * 
    * @param titre : le titre du mémo 
@@ -33,24 +33,15 @@ export class AddMemoService {
     this.newMemo.titre = titre;
     this.newMemo.priorite =  priorite;
     this.newMemo.contenu = contenue;
-    this.http.post(this.path, this.newMemo, this.httpOptions).subscribe(data => 
-        console.log(data)
-      );
-
-    //this.newMemo.id = this.idMemo;
-    //Ajoute notre mémo une liste de memo 
-    // this.listMemo.push(this.newMemo);
-    //Sauvegarde du mémo en local storage
-    // this.saveMemoInToLocalStorage(this.listMemo);
-    // this.idMemo++;
+    //Requête POST : pas necessaire de faire un traitement sur la donnée enregistré 
+    this.http.post(this.path, this.newMemo, this.httpOptions).subscribe({
+      next: null,
+      error: error => console.error('Il y a eu une erreur!', error)
+    });
   }
 
-  /**
-   * 
-   * @param listMemo : Notre liste de mémo a sauvegarder dans le local storage
-   * Nous avons fait une méthode à part en prévision d'une possible BDD 
-   */
-  saveMemoInToLocalStorage(listMemo: Memo[]){
-    localStorage.setItem('memoList',JSON.stringify(listMemo));
+  getMemos(){
+    return this.http.get(this.path, this.httpOptions);
   }
+
 }

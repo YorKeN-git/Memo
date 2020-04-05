@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Memo } from 'src/app/modele/memo';
+import { AddMemoService } from 'src/app/services/add-memo.service';
 
 @Component({
   selector: 'app-mes-memos',
@@ -9,12 +10,13 @@ import { Memo } from 'src/app/modele/memo';
 export class MesMemosComponent implements OnInit {
 
   listMemos: Memo[] = [];
+  newMemo: Memo;
   listMemosDoneOrDelete: Memo[] = [];
 
-  constructor() { }
+  constructor(private memoService: AddMemoService) { }
 
   ngOnInit() {
-    this.getMemoInLocalStorage();
+    // this.getMemoInLocalStorage();
     
     // for(let i=0; i < this.listMemos.length ; i++){
     //   console.log("Mémo n°" + i);
@@ -22,7 +24,8 @@ export class MesMemosComponent implements OnInit {
     //   console.log("contenu :" + this.listMemos[i].contenu);
     // }
     //console.log(this.listMemos);
-    
+
+    this.rechercherLesMemos();
   }
 
   getMemoInLocalStorage(){
@@ -39,6 +42,28 @@ export class MesMemosComponent implements OnInit {
     //utile à l'avenir pour les statistique 
   }
 
+  /**
+   * Nous recherchons tout les mémos stocké dans notre base de donnée 
+   */
+  rechercherLesMemos(){
+    this.memoService.getMemos().subscribe({
+      next: data => {
+        for(const d of (data as any)){
+          this.newMemo = new Memo();
+          this.newMemo.id = d.id;
+          this.newMemo.titre = d.titre;
+          this.newMemo.contenu = d.contenu;
+          this.newMemo.priorite = d.priorite;
+          this.listMemos.push(this.newMemo);
+        }
+        console.log(this.listMemos);
+      },
+      error: error => console.error('Il y a eu une erreur!', error)
+    });
+
+    //console.log("Voici les mémos récupéré : ");
+    //console.log(this.listMemos);
+  }
 
 
 }
