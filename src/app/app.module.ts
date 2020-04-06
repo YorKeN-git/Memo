@@ -13,6 +13,7 @@ import { MesMemosComponent } from './components/mes-memos/mes-memos.component';
 import { LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { StatistiqueComponent } from './components/statistique/statistique.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     VerticalToolsComponent,
     AddMemoComponent,
     NewMemoComponent,
-    MesMemosComponent
+    MesMemosComponent,
+    StatistiqueComponent
   ],
   imports: [
     BrowserModule,
