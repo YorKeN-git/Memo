@@ -16,15 +16,6 @@ export class MesMemosComponent implements OnInit {
   constructor(private memoService: AddMemoService) { }
 
   ngOnInit() {
-    // this.getMemoInLocalStorage();
-    
-    // for(let i=0; i < this.listMemos.length ; i++){
-    //   console.log("Mémo n°" + i);
-    //   console.log("titre: " + this.listMemos[i].titre);
-    //   console.log("contenu :" + this.listMemos[i].contenu);
-    // }
-    //console.log(this.listMemos);
-
     this.rechercherLesMemos();
   }
 
@@ -35,13 +26,14 @@ export class MesMemosComponent implements OnInit {
 
   deleteMemo(id:string){
     //Supprime le mémo 
-    this.memoService.deleteMemo(id);
-    this.ngOnInit();
+    this.memoService.modifierMemo(id, 'supprimer', this.listMemos);
   }
 
-  doneMemo(id:number){
+  doneMemo(id:string){
     //Place le memo terminé dans une liste de mémo terminé 
     //utile à l'avenir pour les statistique 
+    let statutFait = "fait";
+    this.memoService.modifierMemo(id, statutFait, this.listMemos);
   }
 
   /**
@@ -57,15 +49,22 @@ export class MesMemosComponent implements OnInit {
           this.newMemo.titre = d.titre;
           this.newMemo.contenu = d.contenu;
           this.newMemo.priorite = d.priorite;
-          this.listMemos.push(this.newMemo);
+          this.newMemo.status = d.status;
+          this.newMemo.dateCreation = d.dateCreation;
+          this.newMemo.dateFait = d.dateFait;
+          this.newMemo.dateSuppression = d.dateSuppression;
+          if(this.newMemo.status == "null"){
+            this.listMemos.push(this.newMemo);
+          }else{
+            this.listMemosDoneOrDelete.push(this.newMemo);
+          }
+          
         }
-        //console.log(this.listMemos);
+        console.log(this.listMemos);
+        console.log(this.listMemosDoneOrDelete);
       },
       error: error => console.error('Il y a eu une erreur!', error)
     });
-
-    //console.log("Voici les mémos récupéré : ");
-    //console.log(this.listMemos);
   }
 
 
